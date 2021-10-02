@@ -6,10 +6,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
+import { PokemonDetailComponent } from './components/pokemon-detail/pokemon-detail.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PokemonDetailComponent
   ],
   imports: [
     BrowserModule,
