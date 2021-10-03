@@ -7,11 +7,13 @@ import { MaterialModule } from './material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { PokemonDetailComponent } from './components/pokemon-detail/pokemon-detail.component';
+import { PokemonListComponent } from './components/pokemon-list/pokemon-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PokemonDetailComponent
+    PokemonDetailComponent,
+    PokemonListComponent
   ],
   imports: [
     BrowserModule,
