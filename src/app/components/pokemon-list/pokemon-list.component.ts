@@ -8,7 +8,6 @@ import { PokemonList } from '../../models/pokemon.list';
 import { PokemonService } from '../../services/pokemon.service';
 import { PokemonDetailComponent } from '../pokemon-detail/pokemon-detail.component';
 
-
 @Component({
   selector: 'app-pokemon-list',
   templateUrl: './pokemon-list.component.html',
@@ -21,17 +20,17 @@ export class PokemonListComponent implements OnInit {
   classicMode: boolean = true;
 
   private offset: number;
-  isLoading: boolean | undefined;
+  isLoading: boolean;
   isLastPage = false;
 
   searchPokemon: PokemonDetail = new PokemonDetail();
   isSearching = false;
 
   constructor(private pokemonService: PokemonService,
-    private bottomSheet: MatBottomSheet,
-    private snackBar: MatSnackBar) {
-    this.offset = 0 ;
-  }
+              private bottomSheet: MatBottomSheet,
+              private snackBar: MatSnackBar) { 
+                this.offset = 0 ;
+              }
 
   ngOnInit(): void {
     this.getPage(this.offset);
@@ -41,15 +40,15 @@ export class PokemonListComponent implements OnInit {
     if(!this.isLoading && !this.isLastPage) {
       this.isLoading = true;
       this.pokemonService.getPokemonList(offset)
-        .subscribe((list: PokemonList[]) => {
-          if(list.length === 0) {
-            this.isLastPage = true;
-          }
+      .subscribe((list: PokemonList[]) => {
+        if(list.length === 0) {
+          this.isLastPage = true;
+        }
 
-          if(!this.isLastPage) {
-            this.getPokemon(list);
-          }
-        });
+        if(!this.isLastPage) {
+          this.getPokemon(list);
+        }
+      });
     }
   }
 
@@ -61,17 +60,17 @@ export class PokemonListComponent implements OnInit {
       this.isSearching = true;
       this.isLoading = true;
       this.pokemonService.getPokemonDetail(value)
-        .subscribe((pokemon: PokemonDetail) => {
-          this.searchPokemon = pokemon;
-          this.isLoading = false;
-        }, (error: any) => {
-          this.isLoading = false;
-          if(error.status === 404) {
-            this.snackBar.open('Sorry, Pokemon not found', 'Ok', {
-              duration: 5000,
-            });
-          }
-        })
+      .subscribe((pokemon: PokemonDetail) => {
+        this.searchPokemon = pokemon;
+        this.isLoading = false;
+      }, (error: any) => {
+        this.isLoading = false;
+        if(error.status === 404) {
+          this.snackBar.open('Sorry, Pokemon not found', 'Ok', {
+            duration: 5000,
+          });
+        }
+      })
     }
   }
 
@@ -89,8 +88,7 @@ export class PokemonListComponent implements OnInit {
         this.pokemonService.getPokemonDetail(value.name)
       );
     });
-
-    // @ts-ignore
+    
     forkJoin([...arr]).subscribe((pokemons: []) => {
       this.pokemons.push(...pokemons);
       this.offset +=20;

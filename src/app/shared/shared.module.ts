@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 
+
+
 @NgModule({
-  declarations: [
-    ProgressBarComponent
-  ],
+  declarations: [ProgressBarComponent],
   imports: [
     CommonModule
   ],
@@ -13,4 +13,4 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
     ProgressBarComponent
   ]
 })
-export class SharedModule {}
+export class SharedModule { }

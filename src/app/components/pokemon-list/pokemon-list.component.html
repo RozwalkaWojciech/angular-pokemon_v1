@@ -7,10 +7,10 @@
         </mat-form-field>
         <section class="col-12">
             <mat-slide-toggle
-                    color="primary"
-                    [checked]="classicMode"
-                    (change)="classicMode = !classicMode">
-                {{classicMode ? 'Classic' : 'Gif'}}
+            color="primary"
+            [checked]="classicMode"
+            (change)="classicMode = !classicMode">
+            {{classicMode ? 'Classic' : 'Gif'}}
             </mat-slide-toggle>
         </section>
     </div>
@@ -44,7 +44,7 @@
                 <img class="card__bg" src="../../../assets/images/pokeball-background.png" alt="pokeball-card" />
                 <div class="card__info">
                     <h2 class="color-white">{{searchPokemon.name}}</h2>
-                    <span class="color-white {{'bg-color-'+getPrincipalType(searchPokemon.types)}}" *ngFor="let type of searchPokemon.types">{{type.type.name}}</span>
+                    <span class="color-white {{'bg-color-'+getPrincipalType(searchPokemon.types)}}" *ngFor="let type of searchPokemon.types">{{type.type.name}}</span>                    
                 </div>
                 <div class="card__img">
                     <img *ngIf="classicMode" [src]="searchPokemon.sprites?.front_default" [alt]="searchPokemon.name">
@@ -52,7 +52,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
 
 
 </div>

@@ -7,20 +7,20 @@ import { map } from "rxjs/operators";
 
 @Injectable({providedIn: 'root'})
 export class PokemonService {
-  private baseUrl = 'https://pokeapi.co/api/v2/';
+    private baseUrl = 'https://pokeapi.co/api/v2/';
+    
+    constructor(private http: HttpClient) { }
 
-  constructor(private http: HttpClient) { }
 
+    getPokemonList(offset: number, limit: number = 20) : Observable<PokemonList[]> {
+        return this.http.get<PokemonList[]>(this.baseUrl + 'pokemon?offset=' + offset + '&limit=' + limit)
+        .pipe(
+            map((x: any) => x.results)
+        );
+    }
 
-  getPokemonList(offset: number, limit: number = 20) : Observable<PokemonList[]> {
-    return this.http.get<PokemonList[]>(this.baseUrl + 'pokemon?offset=' + offset + '&limit=' + limit)
-      .pipe(
-        map((x: any) => x.results)
-      );
-  }
-
-  getPokemonDetail(pokemon: number | string): Observable<PokemonDetail> {
-    return this.http.get<PokemonDetail>(this.baseUrl + 'pokemon/' + pokemon);
-  }
-
+    getPokemonDetail(pokemon: number | string): Observable<PokemonDetail> {
+        return this.http.get<PokemonDetail>(this.baseUrl + 'pokemon/' + pokemon);
+    }
+    
 }

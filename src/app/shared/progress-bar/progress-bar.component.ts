@@ -6,7 +6,6 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./progress-bar.component.sass']
 })
 export class ProgressBarComponent implements OnInit {
-
   @Input() color = 'bug';
   @Input() value = 0;
   @Input() height = 20;
